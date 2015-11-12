@@ -1,34 +1,35 @@
 //
-//  EventViewController.m
+//  UnofficialEventViewController.m
 //  FEFU
 //
-//  Created by Илья on 10.11.15.
+//  Created by Илья on 12.11.15.
 //  Copyright © 2015 FARPOST. All rights reserved.
 //
 
-#import "EventViewController.h"
+#import "UnofficialEventViewController.h"
 #import "EventCell.h"
 #import "EventDetailViewController.h"
 #import "AFNetworking.h"
 
-@implementation EventViewController{
+
+@implementation UnofficialEventViewController{
     NSArray *data;
 }
+
 
 - (void) viewDidLoad{
     [super viewDidLoad];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://31.131.24.188:8080/newsLine/0&o" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:@"http://31.131.24.188:8080/newsLine/0&u" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = responseObject;
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
-    
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return (NSInteger)[data count];
@@ -43,8 +44,6 @@
         cell = [nib objectAtIndex:0];
     }
     
-    //cell.lineBreakMode = NSLineBreakByWordWrapping;
-    //textLabel.numberOfLines = 0;
     cell.header.lineBreakMode = NSLineBreakByWordWrapping;
     cell.text.numberOfLines = 0;
     
@@ -53,7 +52,7 @@
     
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
     cell.image.image = [UIImage imageWithData:imageData];
-
+    
     
     return cell;
 }
@@ -74,5 +73,7 @@
         
     }
 }
+
+
 
 @end
