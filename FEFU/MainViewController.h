@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  FEFU
 //
 //  Created by Илья on 10.11.15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MainViewController : UIViewController
 
 @end
-

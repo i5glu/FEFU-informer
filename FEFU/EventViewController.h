@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  EventViewController.h
 //  FEFU
 //
 //  Created by Илья on 10.11.15.
@@ -8,9 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface EventViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 @end
-
