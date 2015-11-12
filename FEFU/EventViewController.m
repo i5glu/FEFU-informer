@@ -54,9 +54,21 @@
     cell.header.text  = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.text.text = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
     
+    
+    /*
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
     cell.image.image = [UIImage imageWithData:imageData];
-
+    */
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]  ]];
+        if ( imageData == nil )
+            return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // WARNING: is the cell still using the same data by this point??
+            cell.image.image = [UIImage imageWithData: imageData];
+        });
+    });
     
     return cell;
 }
