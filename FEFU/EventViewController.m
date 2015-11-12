@@ -34,6 +34,11 @@
     return (NSInteger)[data count];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellID = @"EventCell";
     EventCell *cell = (EventCell*)[tableView dequeueReusableCellWithIdentifier:cellID];
@@ -43,8 +48,6 @@
         cell = [nib objectAtIndex:0];
     }
     
-    //cell.lineBreakMode = NSLineBreakByWordWrapping;
-    //textLabel.numberOfLines = 0;
     cell.header.lineBreakMode = NSLineBreakByWordWrapping;
     cell.text.numberOfLines = 0;
     
@@ -58,7 +61,10 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    NSLog(@"%li", (long)indexPath.row);
     [self performSegueWithIdentifier:@"showEventDetails" sender:self];
 }
 
@@ -66,7 +72,7 @@
     if ([segue.identifier  isEqual: @"showEventDetails"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         EventDetailViewController *vc = (EventDetailViewController*)[segue destinationViewController];
-        
+        NSLog(@"%ld",(long)indexPath.row);
         vc.textValue = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
         NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
         vc.imageValue = [UIImage imageWithData:imageData];

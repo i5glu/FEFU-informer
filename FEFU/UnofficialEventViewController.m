@@ -58,11 +58,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"showEventDetails" sender:self];
+    [self performSegueWithIdentifier:@"UshowEventDetails" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier  isEqual: @"showEventDetails"]) {
+    if ([segue.identifier  isEqual: @"UshowEventDetails"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         EventDetailViewController *vc = (EventDetailViewController*)[segue destinationViewController];
         
