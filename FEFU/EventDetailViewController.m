@@ -21,6 +21,8 @@
     [super viewDidLoad];
     text.text = textValue;
     image.image = imageValue;
+    text.lineBreakMode = NSLineBreakByWordWrapping;
+    text.numberOfLines = 0;
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "EventViewController.h"
 #import "EventCell.h"
 #import "EventDetailViewController.h"
+#import "AFNetworking.h"
 
 @implementation EventViewController{
     NSArray *data;
@@ -16,11 +17,22 @@
 
 - (void) viewDidLoad{
     [super viewDidLoad];
-    data = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://31.131.24.188:8080/newsLine/0&o" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSLog(@"JSON: %@", responseObject);
+        data = responseObject;
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [data count];
+    return (NSInteger)[data count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -32,9 +44,17 @@
         cell = [nib objectAtIndex:0];
     }
     
-    cell.header.text  = [data objectAtIndex:indexPath.row];
-    cell.text.text = [data objectAtIndex:indexPath.row];
-    cell.image.image = [UIImage imageNamed:@"AboutIcon"];
+    //cell.lineBreakMode = NSLineBreakByWordWrapping;
+    //textLabel.numberOfLines = 0;
+    cell.header.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.text.numberOfLines = 0;
+    
+    cell.header.text  = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.text.text = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
+    
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
+    cell.image.image = [UIImage imageWithData:imageData];
+
     
     return cell;
 }
@@ -48,9 +68,11 @@
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         EventDetailViewController *vc = (EventDetailViewController*)[segue destinationViewController];
         
-        vc.textValue = [data objectAtIndex:indexPath.row];
-        vc.imageValue = [UIImage imageNamed:@"AboutIcon"];
-        vc.title = [data objectAtIndex:indexPath.row];
+        vc.textValue = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
+        vc.imageValue = [UIImage imageWithData:imageData];
+        vc.title = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
+        
     }
 }
 
