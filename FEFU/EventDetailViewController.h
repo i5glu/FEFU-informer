@@ -10,7 +10,7 @@
 
 @interface EventDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *image;
-@property (weak, nonatomic) IBOutlet UILabel *text;
+@property (weak, nonatomic) IBOutlet UITextView *text;
 
 @property (nonatomic, strong) UIImage *imageValue;
 @property (nonatomic, strong) NSString *textValue;

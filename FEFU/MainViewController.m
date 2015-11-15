@@ -17,4 +17,8 @@
     [self performSegueWithIdentifier: @"showNews" sender: sender];
 }
 
+- (IBAction)showPeople:(id)sender{
+    [self performSegueWithIdentifier:@"showPeople" sender:sender];
+}
+
 @end

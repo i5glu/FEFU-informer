@@ -1,43 +1,37 @@
 //
-//  EventViewController.m
+//  OfficialNewsViewController.m
 //  FEFU
 //
-//  Created by Илья on 10.11.15.
+//  Created by Илья on 15.11.15.
 //  Copyright © 2015 FARPOST. All rights reserved.
 //
 
-#import "EventViewController.h"
+#import "OfficialNewsViewController.h"
 #import "CellView.h"
-#import "EventDetailViewController.h"
+#import "DetailsViewController.h"
 #import "AFNetworking.h"
 
-@implementation EventViewController{
-    
+@implementation OfficialNewsViewController{
+    NSArray *data;
 }
 
-static NSArray *data;
-/*
-- (void) viewDidLoad{
+
+- (void)viewDidLoad{
     [super viewDidLoad];
- 
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://31.131.24.188:8080/newsline/0&u" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:@"http://31.131.24.188:8080/newsline/0&o" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = responseObject;
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    
 }
-*/
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [data count];
 }
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellID = @"cellID";
@@ -49,6 +43,7 @@ static NSArray *data;
     }
     
     cell.header.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.content.editable = NO;
     
     cell.header.text  = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.content.text = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
@@ -64,21 +59,19 @@ static NSArray *data;
     return cell;
 }
 
-/*
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"showEventDetails" sender:self];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"showDetails" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier  isEqual: @"showEventDetails"]) {
+    if ([segue.identifier  isEqual: @"showDetails"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        EventDetailViewController *vc = (EventDetailViewController*)[segue destinationViewController];
-        vc.textValue = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
+        DetailsViewController *vc = (DetailsViewController*)[segue destinationViewController];
+        vc.contentValue = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
         NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
-        vc.imageValue = [UIImage imageWithData:imageData];
+        vc.pictureValue = [UIImage imageWithData:imageData];
         vc.title = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
     }
 }
-*/
+
 @end

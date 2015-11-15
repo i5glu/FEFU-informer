@@ -35,6 +35,11 @@
     return (NSInteger)[data count];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellID = @"EventCell";
     EventCell *cell = (EventCell*)[tableView dequeueReusableCellWithIdentifier:cellID];
@@ -50,19 +55,26 @@
     cell.header.text  = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.text.text = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
     
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
-    cell.image.image = [UIImage imageWithData:imageData];
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]  ]];
+        if ( imageData == nil )
+            return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.image.image = [UIImage imageWithData: imageData];
+        });
+    });
     
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"UshowEventDetails" sender:self];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"showEventDetails" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier  isEqual: @"UshowEventDetails"]) {
+    if ([segue.identifier  isEqual: @"showEventDetails"]) {
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         EventDetailViewController *vc = (EventDetailViewController*)[segue destinationViewController];
         
@@ -70,7 +82,6 @@
         NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
         vc.imageValue = [UIImage imageWithData:imageData];
         vc.title = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
-        
     }
 }
 
