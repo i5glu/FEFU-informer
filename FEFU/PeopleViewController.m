@@ -8,7 +8,7 @@
 
 #import "PeopleViewController.h"
 #import "AFNetworking.h"
-#import "DetailsViewController.h"
+#import "AvatarViewController.h"
 
 @implementation PeopleViewController{
     NSArray *data;
@@ -34,12 +34,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellID = @"cellID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
-    
-    
     NSString *firstName = [[data objectAtIndex:indexPath.row] objectForKey:@"first_name"];
     NSString *secondName = [[data objectAtIndex:indexPath.row] objectForKey:@"last_name"];
     NSString *fullName = [[firstName stringByAppendingString:@" "] stringByAppendingString:secondName];
@@ -55,5 +52,24 @@
     });
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"showAvatar" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier  isEqual: @"showAvatar"]) {
+        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+        AvatarViewController *vc = (AvatarViewController*)[segue destinationViewController];
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"avatar_src"]]];
+        vc.pictureValue = [UIImage imageWithData:imageData];
+        NSString *firstName = [[data objectAtIndex:indexPath.row] objectForKey:@"first_name"];
+        NSString *secondName = [[data objectAtIndex:indexPath.row] objectForKey:@"last_name"];
+        NSString *fullName = [[firstName stringByAppendingString:@" "] stringByAppendingString:secondName];
+        vc.title = fullName;
+    }
+}
+
+
 
 @end
