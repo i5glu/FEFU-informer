@@ -79,7 +79,7 @@
         <!--ДВФУ-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,6 +116,7 @@
                                 <state key="normal" title="Button" image="LampIcon"/>
                                 <connections>
                                     <action selector="showNews:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ffj-eX-dhE"/>
+                                    <segue destination="T0I-M2-k4K" kind="push" id="mOp-Rv-0uL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qD0-3h-hkc">
@@ -158,9 +159,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="ДВФУ" id="H22-iY-0rf"/>
-                    <connections>
-                        <segue destination="T0I-M2-k4K" kind="push" identifier="showNews" id="ELQ-er-92o"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

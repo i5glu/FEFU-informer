@@ -15,7 +15,6 @@
 		C96E81A41BF1E3E2000E2024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96E81A21BF1E3E2000E2024 /* Main.storyboard */; };
 		C96E81A61BF1E3E2000E2024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96E81A51BF1E3E2000E2024 /* Assets.xcassets */; };
 		C96E81A91BF1E3E2000E2024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96E81A71BF1E3E2000E2024 /* LaunchScreen.storyboard */; };
-		C96E81B21BF1EBA7000E2024 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E81B11BF1EBA7000E2024 /* MainViewController.m */; };
 		C9927E3E1BFDFD54006B99EE /* UserConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9927E3D1BFDFD54006B99EE /* UserConfirmViewController.m */; };
 		C99D89451BF77C04006DE20D /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D89441BF77C04006DE20D /* TableViewController.m */; };
 		C99D894A1BF77C3E006DE20D /* CellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D89491BF77C3E006DE20D /* CellView.m */; };
@@ -46,8 +45,6 @@
 		C96E81A51BF1E3E2000E2024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C96E81A81BF1E3E2000E2024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C96E81AA1BF1E3E2000E2024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C96E81B01BF1EBA7000E2024 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		C96E81B11BF1EBA7000E2024 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C9927E3C1BFDFD54006B99EE /* UserConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserConfirmViewController.h; sourceTree = "<group>"; };
 		C9927E3D1BFDFD54006B99EE /* UserConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserConfirmViewController.m; sourceTree = "<group>"; };
 		C99D89431BF77C04006DE20D /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
@@ -133,8 +130,6 @@
 				C99D89421BF77BE4006DE20D /* TableVC */,
 				C96E819C1BF1E3E2000E2024 /* AppDelegate.h */,
 				C96E819D1BF1E3E2000E2024 /* AppDelegate.m */,
-				C96E81B01BF1EBA7000E2024 /* MainViewController.h */,
-				C96E81B11BF1EBA7000E2024 /* MainViewController.m */,
 				C96E81A21BF1E3E2000E2024 /* Main.storyboard */,
 				C96E81A51BF1E3E2000E2024 /* Assets.xcassets */,
 				C96E81A71BF1E3E2000E2024 /* LaunchScreen.storyboard */,
@@ -384,7 +379,6 @@
 				C9BD08881C02245F00DA489A /* AddCarRideViewController.m in Sources */,
 				C9927E3E1BFDFD54006B99EE /* UserConfirmViewController.m in Sources */,
 				C9BD08821C021EE400DA489A /* CarCell.m in Sources */,
-				C96E81B21BF1EBA7000E2024 /* MainViewController.m in Sources */,
 				C99D89571BF8232C006DE20D /* UnofficialNewsViewController.m in Sources */,
 				C99D89541BF81A21006DE20D /* OfficialNewsViewController.m in Sources */,
 				C99D894A1BF77C3E006DE20D /* CellView.m in Sources */,
