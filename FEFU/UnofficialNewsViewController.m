@@ -20,7 +20,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://31.131.24.188:8080/eventsList/0&u" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:@"http://31.131.24.188:8080/eventsList/0&unoff" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = responseObject;
         newsLoadOffset = @5;
         [self.tableView reloadData];
@@ -50,7 +50,8 @@
     cell.content.text = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
     
     dispatch_async(dispatch_get_global_queue(0,0), ^{
-        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]  ]];
+        NSString *url = [@"http://31.131.24.188:8080/" stringByAppendingString:[[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]];
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: url]];
         if ( imageData == nil )
             return;
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -75,7 +76,7 @@
     float reload_distance = 50;
     if(y > h + reload_distance) {
         
-        NSString *url = [NSString stringWithFormat:@"http://31.131.24.188:8080/eventsList/%@&u", newsLoadOffset];
+        NSString *url = [NSString stringWithFormat:@"http://31.131.24.188:8080/eventsList/%@&unoff", newsLoadOffset];
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             data = [data arrayByAddingObjectsFromArray:responseObject];

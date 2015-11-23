@@ -115,7 +115,6 @@
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                 <state key="normal" title="Button" image="LampIcon"/>
                                 <connections>
-                                    <action selector="showNews:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ffj-eX-dhE"/>
                                     <segue destination="T0I-M2-k4K" kind="push" id="mOp-Rv-0uL"/>
                                 </connections>
                             </button>
