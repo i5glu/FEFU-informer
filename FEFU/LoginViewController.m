@@ -44,7 +44,7 @@
                                    _phoneNumberField.text,
                                    password
                                    ];
-    [request setHTTPBody:[@"{\n  \"phoneNumber\": \"89242336096\",\n  \"password\": \"a75cc07b5d22e6f71a02ceedf3a25ede\"\n}" dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[stringForHTTPBody dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
