@@ -37,45 +37,50 @@
         
         NSString *stringForHTTPBody = [NSString stringWithFormat:@"{\n  \"title\": \"%@\",\n  \"description\": \"%@\",\n  \"officialParam\": \"%@\",\n  \"phoneNumber\": \"%@\",\n  \"fileUpload\": null\n}", _titleField.text, _descriptionText.text, _newsType.on ? @"true" : @"flase", phoneNumber];
         [request setHTTPBody:[stringForHTTPBody dataUsingEncoding:NSUTF8StringEncoding]];
-        
+        NSLog(@"%@", stringForHTTPBody);
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                                 completionHandler:
                                       ^(NSData *data, NSURLResponse *response, NSError *error) {
                                           
                                           if (error) {
-                                              UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
+                                              __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
                                               UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                                                                     style: UIAlertActionStyleDefault
                                                                                                   handler: ^(UIAlertAction *action) {
-                                                                                                      [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                                   }];
-                                              [alert addAction:alertAction];
-                                              [self presentViewController:alert animated:YES completion:nil];
+                                              dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                  [alert addAction:alertAction];
+                                                  [self presentViewController:alert animated:YES completion:nil];
+                                              });
                                               return;
                                         }
                                           
-                                          UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Все хорошо" message:@"Мои поздравления. Новость добавлена" preferredStyle:UIAlertControllerStyleAlert];
+                                          __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Все хорошо" message:@"Мои поздравления. Новость добавлена" preferredStyle:UIAlertControllerStyleAlert];
                                           UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                                                                 style: UIAlertActionStyleDefault
                                                                                               handler: ^(UIAlertAction *action) {
-                                                                                                  [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                               }];
-                                          [alert addAction:alertAction];
-                                          [self presentViewController:alert animated:YES completion:nil];
+                                          dispatch_async(dispatch_get_main_queue(), ^(void){
+                                              [alert addAction:alertAction];
+                                              [self presentViewController:alert animated:YES completion:nil];
+                                          });
                                           
                                       }];
         [task resume];
         
         
     } else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка!" message:@"Сначала придется зарегестрироваться" preferredStyle:UIAlertControllerStyleAlert];
+        
+        __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Сначала придется зарегестрироваться" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                               style: UIAlertActionStyleDefault
                                                             handler: ^(UIAlertAction *action) {
                                                             }];
-        [alert addAction:alertAction];
-        [self presentViewController:alert animated:YES completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [alert addAction:alertAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        });
 
         
     }

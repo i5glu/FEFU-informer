@@ -39,39 +39,42 @@
                                       ^(NSData *data, NSURLResponse *response, NSError *error) {
                                           
                                           if (error) {
-                                              UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
+                                              __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
                                               UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                                                                     style: UIAlertActionStyleDefault
                                                                                                   handler: ^(UIAlertAction *action) {
-                                                                                                      [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                                   }];
-                                              [alert addAction:alertAction];
-                                              [self presentViewController:alert animated:YES completion:nil];
+                                              
+                                              dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                  [alert addAction:alertAction];
+                                                  [self presentViewController:alert animated:YES completion:nil];
+                                              });
                                               return;
                                           }
                                           
-                                          UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Все ок" message:@"Скоро кто-нибудь вас подкинет" preferredStyle:UIAlertControllerStyleAlert];
+                                          __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Все ок" message:@"Скоро кто-нибудь вас подкинет" preferredStyle:UIAlertControllerStyleAlert];
                                           UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                                                                 style: UIAlertActionStyleDefault
                                                                                               handler: ^(UIAlertAction *action) {
-                                                                                                  [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                               }];
-                                          [alert addAction:alertAction];
-                                          [self presentViewController:alert animated:YES completion:nil];
-
+                                          dispatch_async(dispatch_get_main_queue(), ^(void){
+                                              [alert addAction:alertAction];
+                                              [self presentViewController:alert animated:YES completion:nil];
+                                          });
                                       }];
         [task resume];
         
     }else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка!" message:@"Сначала придется зарегестрироваться" preferredStyle:UIAlertControllerStyleAlert];
+        __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка!" message:@"Сначала придется зарегестрироваться" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                               style: UIAlertActionStyleDefault
                                                             handler: ^(UIAlertAction *action) {
                                                             }];
-        [alert addAction:alertAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [alert addAction:alertAction];
+            [self presentViewController:alert animated:YES completion:nil];
+
+        });
     }
 
     

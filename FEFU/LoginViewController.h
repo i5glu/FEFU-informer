@@ -1,5 +1,5 @@
 //
-//  CarTableViewController.h
+//  LoginViewController.h
 //  FEFU
 //
 //  Created by Илья on 23.11.15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CarTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface LoginViewController : UIViewController
 
 @end

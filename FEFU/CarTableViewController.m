@@ -47,13 +47,13 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellID owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-
-    
     
     cell.destination.text  = [[data objectAtIndex:indexPath.row] objectForKey:@"destination"];
     cell.departure.text = [[data objectAtIndex:indexPath.row] objectForKey:@"departure"];
-    cell.payment.text = [[data objectAtIndex:indexPath.row] objectForKey:@"payment"];
-    cell.phoneNumber.text = [[data objectAtIndex:indexPath.row] objectForKey:@"phoneNumber"];
+    NSString *payment = [NSString stringWithFormat:@"%@", [[data objectAtIndex:indexPath.row] objectForKey:@"payment"]];
+    cell.payment.text = payment;
+    NSString *phoneNumber = [NSString stringWithFormat:@"%@", [[data objectAtIndex:indexPath.row] objectForKey:@"phone_number"]];
+    cell.phoneNumber.text = [NSString stringWithFormat:@"8%@", phoneNumber];
     cell.note.text = [[data objectAtIndex:indexPath.row] objectForKey:@"note"];
     cell.note.editable = NO;
     return cell;

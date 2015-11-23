@@ -53,6 +53,7 @@
     cell.header.text  = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.content.text = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
     
+    
     dispatch_async(dispatch_get_global_queue(0,0), ^{
         
         NSString *url = [@"http://31.131.24.188:8080/" stringByAppendingString:[[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]];
@@ -105,7 +106,8 @@
         NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
         DetailsViewController *vc = (DetailsViewController*)[segue destinationViewController];
         vc.contentValue = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
-        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]]];
+        NSString *url = [@"http://31.131.24.188:8080/" stringByAppendingString:[[data objectAtIndex:indexPath.row] objectForKey:@"img_src"]];
+        NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: url]];
         vc.pictureValue = [UIImage imageWithData:imageData];
         vc.title = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
     }

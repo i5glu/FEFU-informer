@@ -8,7 +8,6 @@
 
 #import "RegistrationViewController.h"
 #import "AFNetworking.h"
-#import "UserConfirmViewController.h"
 #import <CommonCrypto/CommonDigest.h>
 
 
@@ -53,19 +52,17 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:
                                   ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                      
                                       if (error) {
-                                          UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка 1" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
+                                          __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
                                           UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                                                                 style: UIAlertActionStyleDefault
                                                                                               handler: ^(UIAlertAction *action) {
                                                                                                   [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                               }];
-                                          [alert addAction:alertAction];
-                                          [self presentViewController:alert animated:YES completion:nil];
-
-                                          
-                                          
+                                          dispatch_async(dispatch_get_main_queue(), ^(void){
+                                              [alert addAction:alertAction];
+                                              [self presentViewController:alert animated:YES completion:nil];
+                                          });
                                           return;
                                       }
                                       
@@ -85,35 +82,49 @@
                                       [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
                                       NSString *stringForHTTPBody = [NSString stringWithFormat:
                                                                      @"{\n  \"phoneNumber\": \"%@\",\n  \"phoneCode\": \"%@\"\n}", _phoneNumber.text, phoneCode];
+                                      NSLog(@"%@", phoneCode);
+
                                       [request setHTTPBody:[stringForHTTPBody dataUsingEncoding:NSUTF8StringEncoding]];
                                       
                                       NSURLSession *session = [NSURLSession sharedSession];
                                       NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                                                               completionHandler:
                                                                     ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                                        
                                                                         if (error) {
-                                                                            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка 1" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
+                                                                            
+                                                                            __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
                                                                             UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                                                                                                   style: UIAlertActionStyleDefault
                                                                                                                                 handler: ^(UIAlertAction *action) {
                                                                                                                                     [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                                                                 }];
-                                                                            [alert addAction:alertAction];
-                                                                            [self presentViewController:alert animated:YES completion:nil];
+                                                                            dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                                [alert addAction:alertAction];
+                                                                                [self presentViewController:alert animated:YES completion:nil];
+                                                                            });
+                                                                            
                                                                             return;
                                                                         }
                                                                         
+
                                                                         
-                                                                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Успех!" message:@"Поздравляем, теперь вы один из нас" preferredStyle:UIAlertControllerStyleAlert];
+                                                                        
+                                                                        __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Успех!" message:@"Поздравляем, теперь вы один из нас" preferredStyle:UIAlertControllerStyleAlert];
                                                                         UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
                                                                                                                               style: UIAlertActionStyleDefault
                                                                                                                             handler: ^(UIAlertAction *action) {
-                                                                                                                                [[NSUserDefaults standardUserDefaults] setObject:_phoneNumber forKey:@"phoneNumber"];
-                                                                                                                                [self.navigationController popToRootViewControllerAnimated:YES];
+                                                                                                                                [[NSUserDefaults standardUserDefaults] setObject:_phoneNumber.text forKey:@"phoneNumber"];
+                                                                                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                                                                                    [self.navigationController popToRootViewControllerAnimated:YES];
+                                                                                                                                });
+                                                                                                            
                                                                                                                             }];
-                                                                        [alert addAction:alertAction];
-                                                                        [self presentViewController:alert animated:YES completion:nil];
+                                                                        
+                                                                        dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                            [alert addAction:alertAction];
+                                                                            [self presentViewController:alert animated:YES completion:nil];
+                                                                        });
+                                                                        
 
                                                                     }];
                                       [task resume];
@@ -135,11 +146,5 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqual:@"confirmUser"]) {
-        UserConfirmViewController *vc = (UserConfirmViewController *)[segue destinationViewController];
-        vc.phoneNumber = _phoneNumber.text;
-    }
-}
 
 @end
