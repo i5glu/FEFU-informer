@@ -30,6 +30,7 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
         NSString *stringForHTTPBody = [NSString stringWithFormat:@"{\n  \"destination\": \"%@\",\n  \"departure\": \"%@\",\n  \"payment\": \"%@\",\n  \"note\": \"%@\",\n  \"phoneNumber\": \"%@\"\n}", _destination.text, _departure.text, _payment.text, _note.text, phoneNumber];
+        NSLog(@"%@", stringForHTTPBody);
         
         [request setHTTPBody:[stringForHTTPBody dataUsingEncoding:NSUTF8StringEncoding]];
         
@@ -37,6 +38,8 @@
         NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                                 completionHandler:
                                       ^(NSData *data, NSURLResponse *response, NSError *error) {
+                                          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                          NSLog(@"%ld", (long)httpResponse.statusCode);
                                           
                                           if (error) {
                                               __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];

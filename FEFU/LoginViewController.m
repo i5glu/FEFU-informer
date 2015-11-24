@@ -57,6 +57,10 @@
                                       }
                                       
                                       NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                      NSLog(@"%@",[NSHTTPURLResponse localizedStringForStatusCode: httpResponse.statusCode]);
+                                      
+                                      
+                                      
                                       if (httpResponse.statusCode == 200) {
                                           [[NSUserDefaults standardUserDefaults] setObject:_phoneNumberField.text forKey:@"phoneNumber"];
                                           

@@ -16,7 +16,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" textLabel="4SF-gt-bMO" rowHeight="73" style="IBUITableViewCellStyleDefault" id="Mad-MH-k8R">
-                                <rect key="frame" x="0.0" y="92" width="414" height="73"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mad-MH-k8R" id="Isz-Or-pix">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
@@ -159,7 +159,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="ДВФУ" id="H22-iY-0rf"/>
                     <connections>
-                        <segue destination="aLW-4b-yLq" kind="push" identifier="registration" id="e9X-Z9-YkA"/>
+                        <segue destination="aLW-4b-yLq" kind="push" identifier="register" id="e9X-Z9-YkA"/>
                         <segue destination="GOa-dL-kxR" kind="push" identifier="login" id="1Ez-h9-QUP"/>
                     </connections>
                 </viewController>
@@ -387,7 +387,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CarCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarCell" rowHeight="303" id="JdO-fx-jtd" customClass="CarCell">
-                                <rect key="frame" x="0.0" y="92" width="414" height="303"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="303"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JdO-fx-jtd" id="952-oq-Tus">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="302"/>
@@ -539,7 +539,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -608,7 +607,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellID" rowHeight="166" id="kxG-Gi-FrR" customClass="CellView">
-                                <rect key="frame" x="0.0" y="92" width="414" height="166"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="166"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kxG-Gi-FrR" id="F2m-XP-IO8">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="165"/>
@@ -815,7 +814,7 @@
                                 <animations/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Официальная" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="76X-nZ-5fY">
-                                <rect key="frame" x="65" y="502" width="110" height="21"/>
+                                <rect key="frame" x="240" y="502" width="110" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -823,7 +822,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не официальная" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KvQ-aI-hXZ">
-                                <rect key="frame" x="240" y="502" width="133" height="21"/>
+                                <rect key="frame" x="42" y="502" width="133" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
