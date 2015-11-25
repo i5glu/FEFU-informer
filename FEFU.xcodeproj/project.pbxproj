@@ -10,16 +10,14 @@
 		3EB3ED89758BAA21A32B0597 /* libPods-FEFU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAF38CA18B97D19BDF98438C /* libPods-FEFU.a */; };
 		C91CA42F1BFCC1A40026C768 /* RegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91CA42E1BFCC1A40026C768 /* RegistrationViewController.m */; };
 		C91CA4321BFCC3E80026C768 /* AvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91CA4311BFCC3E80026C768 /* AvatarViewController.m */; };
+		C969A4691C05A15800D2485D /* NewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C969A4681C05A15800D2485D /* NewsTableViewController.m */; };
 		C96E819B1BF1E3E2000E2024 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E819A1BF1E3E2000E2024 /* main.m */; };
 		C96E819E1BF1E3E2000E2024 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C96E819D1BF1E3E2000E2024 /* AppDelegate.m */; };
 		C96E81A41BF1E3E2000E2024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96E81A21BF1E3E2000E2024 /* Main.storyboard */; };
 		C96E81A61BF1E3E2000E2024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96E81A51BF1E3E2000E2024 /* Assets.xcassets */; };
 		C96E81A91BF1E3E2000E2024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96E81A71BF1E3E2000E2024 /* LaunchScreen.storyboard */; };
-		C99D89451BF77C04006DE20D /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D89441BF77C04006DE20D /* TableViewController.m */; };
 		C99D894A1BF77C3E006DE20D /* CellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D89491BF77C3E006DE20D /* CellView.m */; };
 		C99D894E1BF77CC8006DE20D /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D894D1BF77CC8006DE20D /* DetailsViewController.m */; };
-		C99D89541BF81A21006DE20D /* OfficialNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D89531BF81A21006DE20D /* OfficialNewsViewController.m */; };
-		C99D89571BF8232C006DE20D /* UnofficialNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D89561BF8232C006DE20D /* UnofficialNewsViewController.m */; };
 		C99D895B1BF828EA006DE20D /* PeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99D895A1BF828EA006DE20D /* PeopleViewController.m */; };
 		C9BD08751C02072900DA489A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C9BD08741C02072900DA489A /* README.md */; };
 		C9BD08781C02195300DA489A /* AddNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD08771C02195300DA489A /* AddNewsViewController.m */; };
@@ -27,7 +25,6 @@
 		C9BD08851C021FB100DA489A /* CarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD08841C021FB100DA489A /* CarTableViewController.m */; };
 		C9BD08881C02245F00DA489A /* AddCarRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD08871C02245F00DA489A /* AddCarRideViewController.m */; };
 		C9BD088B1C02BCC200DA489A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD088A1C02BCC200DA489A /* MainViewController.m */; };
-		C9BD088E1C02BF0400DA489A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD088D1C02BF0400DA489A /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +35,8 @@
 		C91CA42E1BFCC1A40026C768 /* RegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationViewController.m; sourceTree = "<group>"; };
 		C91CA4301BFCC3E80026C768 /* AvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarViewController.h; sourceTree = "<group>"; };
 		C91CA4311BFCC3E80026C768 /* AvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarViewController.m; sourceTree = "<group>"; };
+		C969A4671C05A15800D2485D /* NewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewController.h; sourceTree = "<group>"; };
+		C969A4681C05A15800D2485D /* NewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewController.m; sourceTree = "<group>"; };
 		C96E81961BF1E3E2000E2024 /* FEFU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FEFU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96E819A1BF1E3E2000E2024 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C96E819C1BF1E3E2000E2024 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,16 +45,10 @@
 		C96E81A51BF1E3E2000E2024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C96E81A81BF1E3E2000E2024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C96E81AA1BF1E3E2000E2024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C99D89431BF77C04006DE20D /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		C99D89441BF77C04006DE20D /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		C99D89481BF77C3E006DE20D /* CellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellView.h; sourceTree = "<group>"; };
 		C99D89491BF77C3E006DE20D /* CellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellView.m; sourceTree = "<group>"; };
 		C99D894C1BF77CC8006DE20D /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		C99D894D1BF77CC8006DE20D /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
-		C99D89521BF81A21006DE20D /* OfficialNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfficialNewsViewController.h; sourceTree = "<group>"; };
-		C99D89531BF81A21006DE20D /* OfficialNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfficialNewsViewController.m; sourceTree = "<group>"; };
-		C99D89551BF8232C006DE20D /* UnofficialNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnofficialNewsViewController.h; sourceTree = "<group>"; };
-		C99D89561BF8232C006DE20D /* UnofficialNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnofficialNewsViewController.m; sourceTree = "<group>"; };
 		C99D89591BF828EA006DE20D /* PeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleViewController.h; sourceTree = "<group>"; };
 		C99D895A1BF828EA006DE20D /* PeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleViewController.m; sourceTree = "<group>"; };
 		C9BD08741C02072900DA489A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -69,8 +62,6 @@
 		C9BD08871C02245F00DA489A /* AddCarRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCarRideViewController.m; sourceTree = "<group>"; };
 		C9BD08891C02BCC200DA489A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C9BD088A1C02BCC200DA489A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		C9BD088C1C02BF0400DA489A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		C9BD088D1C02BF0400DA489A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +90,6 @@
 			children = (
 				C91CA42D1BFCC1A40026C768 /* RegistrationViewController.h */,
 				C91CA42E1BFCC1A40026C768 /* RegistrationViewController.m */,
-				C9BD088C1C02BF0400DA489A /* LoginViewController.h */,
-				C9BD088D1C02BF0400DA489A /* LoginViewController.m */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -127,10 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				C9BD08791C021E6900DA489A /* Car */,
-				C91CA42C1BFCC1770026C768 /* Users */,
 				C99D89581BF828D2006DE20D /* People */,
+				C91CA42C1BFCC1770026C768 /* Users */,
 				C99D894F1BF819E4006DE20D /* News */,
-				C99D89421BF77BE4006DE20D /* TableVC */,
 				C96E819C1BF1E3E2000E2024 /* AppDelegate.h */,
 				C96E819D1BF1E3E2000E2024 /* AppDelegate.m */,
 				C96E81A21BF1E3E2000E2024 /* Main.storyboard */,
@@ -153,28 +141,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C99D89421BF77BE4006DE20D /* TableVC */ = {
-			isa = PBXGroup;
-			children = (
-				C99D894B1BF77CAF006DE20D /* Details */,
-				C99D89471BF77C1B006DE20D /* Cell */,
-				C99D89461BF77C0E006DE20D /* Table */,
-			);
-			name = TableVC;
-			sourceTree = "<group>";
-		};
-		C99D89461BF77C0E006DE20D /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				C99D89431BF77C04006DE20D /* TableViewController.h */,
-				C99D89441BF77C04006DE20D /* TableViewController.m */,
-			);
-			name = Table;
-			sourceTree = "<group>";
-		};
 		C99D89471BF77C1B006DE20D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C99D894B1BF77CAF006DE20D /* Details */,
 				C99D89481BF77C3E006DE20D /* CellView.h */,
 				C99D89491BF77C3E006DE20D /* CellView.m */,
 			);
@@ -193,30 +163,13 @@
 		C99D894F1BF819E4006DE20D /* News */ = {
 			isa = PBXGroup;
 			children = (
-				C99D89511BF819FB006DE20D /* Official */,
-				C99D89501BF819ED006DE20D /* Unofficial */,
+				C99D89471BF77C1B006DE20D /* Cell */,
 				C9BD08761C02195300DA489A /* AddNewsViewController.h */,
 				C9BD08771C02195300DA489A /* AddNewsViewController.m */,
+				C969A4681C05A15800D2485D /* NewsTableViewController.m */,
+				C969A4671C05A15800D2485D /* NewsTableViewController.h */,
 			);
 			name = News;
-			sourceTree = "<group>";
-		};
-		C99D89501BF819ED006DE20D /* Unofficial */ = {
-			isa = PBXGroup;
-			children = (
-				C99D89551BF8232C006DE20D /* UnofficialNewsViewController.h */,
-				C99D89561BF8232C006DE20D /* UnofficialNewsViewController.m */,
-			);
-			name = Unofficial;
-			sourceTree = "<group>";
-		};
-		C99D89511BF819FB006DE20D /* Official */ = {
-			isa = PBXGroup;
-			children = (
-				C99D89521BF81A21006DE20D /* OfficialNewsViewController.h */,
-				C99D89531BF81A21006DE20D /* OfficialNewsViewController.m */,
-			);
-			name = Official;
 			sourceTree = "<group>";
 		};
 		C99D89581BF828D2006DE20D /* People */ = {
@@ -379,14 +332,11 @@
 				C96E819B1BF1E3E2000E2024 /* main.m in Sources */,
 				C9BD08751C02072900DA489A /* README.md in Sources */,
 				C9BD08781C02195300DA489A /* AddNewsViewController.m in Sources */,
-				C9BD088E1C02BF0400DA489A /* LoginViewController.m in Sources */,
 				C9BD088B1C02BCC200DA489A /* MainViewController.m in Sources */,
-				C99D89451BF77C04006DE20D /* TableViewController.m in Sources */,
 				C91CA42F1BFCC1A40026C768 /* RegistrationViewController.m in Sources */,
 				C9BD08881C02245F00DA489A /* AddCarRideViewController.m in Sources */,
+				C969A4691C05A15800D2485D /* NewsTableViewController.m in Sources */,
 				C9BD08821C021EE400DA489A /* CarCell.m in Sources */,
-				C99D89571BF8232C006DE20D /* UnofficialNewsViewController.m in Sources */,
-				C99D89541BF81A21006DE20D /* OfficialNewsViewController.m in Sources */,
 				C99D894A1BF77C3E006DE20D /* CellView.m in Sources */,
 				C91CA4321BFCC3E80026C768 /* AvatarViewController.m in Sources */,
 			);

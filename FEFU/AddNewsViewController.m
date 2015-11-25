@@ -7,11 +7,13 @@
 //
 
 #import "AddNewsViewController.h"
+#import "AFNetworking.h"
 
 @interface AddNewsViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
 @property (weak, nonatomic) IBOutlet UISwitch *newsType;
+@property (weak, nonatomic) IBOutlet UIImageView *picture;
 
 @end
 
@@ -19,87 +21,82 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _descriptionText.layer.borderWidth = 1.0f;
+    _descriptionText.layer.borderColor = [[UIColor blackColor] CGColor];
+    [self.tabBarController.tabBar setHidden:YES];
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+}
+
+- (IBAction)pickAvatar:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:NO completion: nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    UIImage *picture = [info valueForKey: UIImagePickerControllerOriginalImage];
+    _picture.image = picture;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 - (IBAction)addNews:(id)sender {
     NSUserDefaults *phoneDef = [NSUserDefaults standardUserDefaults];
     NSString *phoneNumber = [phoneDef stringForKey:@"phoneNumber"];
     
-    if (phoneNumber) {
-        
-        NSURL *URL = [NSURL URLWithString:@"http://31.131.24.188:8080/additionEvents"];
-        
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-        [request setHTTPMethod:@"POST"];
-        
-        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        
-        
-        NSString *stringForHTTPBody = [NSString stringWithFormat:@"{\n  \"title\": \"%@\",\n  \"description\": \"%@\",\n  \"officialParam\": \"%@\",\n  \"phoneNumber\": \"%@\",\n  \"fileUpload\": null\n}", _titleField.text, _descriptionText.text, _newsType.on ? @"true" : @"flase", phoneNumber];
-        [request setHTTPBody:[stringForHTTPBody dataUsingEncoding:NSUTF8StringEncoding]];
-        NSLog(@"%@", stringForHTTPBody);
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                                completionHandler:
-                                      ^(NSData *data, NSURLResponse *response, NSError *error) {
-                                          
-                                          if (error) {
-                                              __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Что-то пошло не так(( попробуйте пожалуйста позже" preferredStyle:UIAlertControllerStyleAlert];
-                                              UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
-                                                                                                    style: UIAlertActionStyleDefault
-                                                                                                  handler: ^(UIAlertAction *action) {
-                                                                                                  }];
-                                              dispatch_async(dispatch_get_main_queue(), ^(void){
-                                                  [alert addAction:alertAction];
-                                                  [self presentViewController:alert animated:YES completion:nil];
-                                              });
-                                              return;
-                                        }
-                                          
-                                          __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Все хорошо" message:@"Мои поздравления. Новость добавлена" preferredStyle:UIAlertControllerStyleAlert];
-                                          UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
-                                                                                                style: UIAlertActionStyleDefault
-                                                                                              handler: ^(UIAlertAction *action) {
-                                                                                              }];
-                                          dispatch_async(dispatch_get_main_queue(), ^(void){
-                                              [alert addAction:alertAction];
-                                              [self presentViewController:alert animated:YES completion:nil];
-                                          });
-                                          
-                                      }];
-        [task resume];
-        
-        
-    } else{
-        
-        __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Сначала придется зарегестрироваться" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
-                                                              style: UIAlertActionStyleDefault
-                                                            handler: ^(UIAlertAction *action) {
-                                                            }];
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [alert addAction:alertAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        });
-
-        
+    NSString *fileUpload;
+    if (_picture.image) {
+        fileUpload = [UIImagePNGRepresentation(_picture.image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    } else {
+        fileUpload = @"nill";
     }
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSDictionary *parameters = @{
+                                @"title"        : _titleField.text,
+                                @"description"  : _descriptionText.text,
+                                @"eventsStatus" : _newsType.on ? @"true" : @"false",
+                                @"phoneNumber"  : phoneNumber,
+                                @"fileUpload"   : fileUpload
+                                };
+    [manager POST:@"http://31.131.24.188:8080/additionEvents" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Успех!" message:responseObject[@"message"] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
+                                                            style: UIAlertActionStyleDefault
+                                                            handler: ^(UIAlertAction *action) {
+                                                                dispatch_async(dispatch_get_main_queue(), ^(void){
+                                                                    [self.navigationController popToRootViewControllerAnimated:YES];
+                                                                });
+                                                            }];
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [alert addAction:alertAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            });
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@", operation.responseObject[@"status"]);
+            __block UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:operation.responseObject[@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *alertAction = [UIAlertAction actionWithTitle: @"Ок"
+                                                                  style: UIAlertActionStyleDefault
+                                                                handler: ^(UIAlertAction *action) {
+                                                                }];
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [alert addAction:alertAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            });
 
+        }];
+        
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

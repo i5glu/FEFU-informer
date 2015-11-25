@@ -13,5 +13,5 @@
 @synthesize header;
 @synthesize content;
 @synthesize picture;
-
+@synthesize status;
 @end

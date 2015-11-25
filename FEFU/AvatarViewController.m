@@ -15,6 +15,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self.tabBarController.tabBar setHidden:YES];
     picture.image = pictureValue;
 }
 
