@@ -49,7 +49,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yaz-T9-CdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4082" y="569"/>
+            <point key="canvasLocation" x="4070" y="633"/>
         </scene>
         <!--Avatar View Controller-->
         <scene sceneID="7Tc-BW-PQC">
@@ -188,7 +188,6 @@
         <!--Car Table View Controller-->
         <scene sceneID="ESl-HE-VxP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WV4-fE-9nF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="vSW-hY-vLq" customClass="CarTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="199" sectionHeaderHeight="28" sectionFooterHeight="28" id="gJF-Td-cuL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
@@ -287,11 +286,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="cT9-kS-1I3"/>
                     <connections>
-                        <segue destination="aLW-4b-yLq" kind="push" id="y81-ft-fK4"/>
                         <segue destination="WYN-XW-DGS" kind="push" identifier="addCarRide" id="k9M-Ol-The"/>
                         <segue destination="aLW-4b-yLq" kind="push" identifier="registration" id="W27-oi-Zpn"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WV4-fE-9nF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4082" y="1472"/>
         </scene>
@@ -627,7 +626,7 @@
         <scene sceneID="Aw8-GO-VUG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i1Y-Ha-ely" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Новости" id="gYO-6d-Dp8"/>
+                    <tabBarItem key="tabBarItem" title="Новости" image="BulletinsIcon" id="gYO-6d-Dp8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="H5N-ZH-Z3a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -647,7 +646,7 @@
         <scene sceneID="Rxi-0G-Pj5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NbG-IQ-1B2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Люди" id="sq5-Sn-rje"/>
+                    <tabBarItem key="tabBarItem" title="Люди" image="PeopleIcon" id="sq5-Sn-rje"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ugh-il-hjn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -663,11 +662,11 @@
             </objects>
             <point key="canvasLocation" x="3456" y="569"/>
         </scene>
-        <!--Кого надо подвезти-->
+        <!--Подвезу-->
         <scene sceneID="6Nf-Hf-q1h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uea-2l-KZK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Кого надо подвезти" id="V9A-hg-V0s" userLabel="Подвезу"/>
+                    <tabBarItem key="tabBarItem" title="Подвезу" image="CarsIcon" id="V9A-hg-V0s" userLabel="Подвезу"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rlx-zI-d57">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -684,7 +683,12 @@
             <point key="canvasLocation" x="3456" y="1472"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BulletinsIcon" width="64" height="32"/>
+        <image name="CarsIcon" width="64" height="32"/>
+        <image name="PeopleIcon" width="64" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="U77-m3-bxt"/>
+        <segue reference="W27-oi-Zpn"/>
     </inferredMetricsTieBreakers>
 </document>

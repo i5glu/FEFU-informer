@@ -166,8 +166,8 @@
 				C99D89471BF77C1B006DE20D /* Cell */,
 				C9BD08761C02195300DA489A /* AddNewsViewController.h */,
 				C9BD08771C02195300DA489A /* AddNewsViewController.m */,
-				C969A4681C05A15800D2485D /* NewsTableViewController.m */,
 				C969A4671C05A15800D2485D /* NewsTableViewController.h */,
+				C969A4681C05A15800D2485D /* NewsTableViewController.m */,
 			);
 			name = News;
 			sourceTree = "<group>";

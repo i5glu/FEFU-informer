@@ -181,11 +181,15 @@
     
     cell.header.text  = [[data objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.content.text = [[data objectAtIndex:indexPath.row] objectForKey:@"description"];
-
-    if ([[data objectAtIndex:indexPath.row] objectForKey:@"is_official"]) {
+    
+    
+    
+    NSLog(@"%@", [[[data objectAtIndex:indexPath.row] objectForKey:@"is_official"] class]);
+    if ([[[data objectAtIndex:indexPath.row] objectForKey:@"is_official"]  isEqual: @(YES)]) {
         cell.status.text = @"Официально";
-        NSLog(@"%@",[[data objectAtIndex:indexPath.row] objectForKey:@"is_official"]);
+        cell.status.textColor = [UIColor greenColor];
     } else {
+        cell.status.textColor = [UIColor redColor];
         cell.status.text = @"Неофициально";
     }
     

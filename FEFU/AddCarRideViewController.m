@@ -20,6 +20,8 @@
 
 - (void)viewDidLoad{
     [self.tabBarController.tabBar setHidden:YES];
+    _note.layer.borderWidth = 1.0f;
+    _note.layer.borderColor = [[UIColor blackColor] CGColor];
 }
 
 - (IBAction)addCarRide:(id)sender {

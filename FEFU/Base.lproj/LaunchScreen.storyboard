@@ -17,13 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FEFU_Informer_Splash" translatesAutoresizingMaskIntoConstraints="NO" id="q2p-jL-Tk6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FEFU_Informer_Splash" translatesAutoresizingMaskIntoConstraints="NO" id="q2p-jL-Tk6">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <animations/>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="q2p-jL-Tk6" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="1bF-aU-Pkv"/>
+                            <constraint firstItem="q2p-jL-Tk6" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="HKb-qK-fmY"/>
+                            <constraint firstItem="q2p-jL-Tk6" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="PDM-X6-iWE"/>
+                            <constraint firstAttribute="trailing" secondItem="q2p-jL-Tk6" secondAttribute="trailing" id="Q8p-js-Zu3"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
