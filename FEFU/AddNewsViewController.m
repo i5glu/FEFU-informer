@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *descriptionText;
 @property (weak, nonatomic) IBOutlet UISwitch *newsType;
 @property (weak, nonatomic) IBOutlet UIImageView *picture;
+@property (weak, nonatomic) IBOutlet UIButton *picturePicker;
 
 @end
 
@@ -21,14 +22,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _descriptionText.layer.borderWidth = 1.0f;
-    _descriptionText.layer.borderColor = [[UIColor blackColor] CGColor];
+    _picturePicker.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    [_descriptionText.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [_descriptionText.layer setBorderWidth:1.0];
+    _descriptionText.layer.cornerRadius = 5;
+    _descriptionText.clipsToBounds = YES;
+    
     [self.tabBarController.tabBar setHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
 }
 
 - (IBAction)pickAvatar:(id)sender {

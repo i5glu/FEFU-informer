@@ -143,6 +143,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor whiteColor];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getLatestData)
+                  forControlEvents:UIControlEventValueChanged];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://31.131.24.188:8080/drivingBidsList/0" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = responseObject;
@@ -150,7 +157,19 @@
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     }];
+}
 
+- (void)getLatestData{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://31.131.24.188:8080/drivingBidsList/0" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.refreshControl endRefreshing];
+        data = responseObject;
+        loadOffset = @5;
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+    
 }
 
 

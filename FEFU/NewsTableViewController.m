@@ -145,16 +145,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor whiteColor];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getLatestData)
+                  forControlEvents:UIControlEventValueChanged];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://31.131.24.188:8080/eventsList/0&all" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = responseObject;
         offsetValue = @5;
         [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+}
+
+- (void)getLatestData{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://31.131.24.188:8080/eventsList/0&all" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.refreshControl endRefreshing];
+        data = responseObject;
+        offsetValue = @5;
+        [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     }];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -184,7 +201,6 @@
     
     
     
-    NSLog(@"%@", [[[data objectAtIndex:indexPath.row] objectForKey:@"is_official"] class]);
     if ([[[data objectAtIndex:indexPath.row] objectForKey:@"is_official"]  isEqual: @(YES)]) {
         cell.status.text = @"Официально";
         cell.status.textColor = [UIColor greenColor];

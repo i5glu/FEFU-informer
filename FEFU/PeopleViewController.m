@@ -128,6 +128,12 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor whiteColor];
+    self.refreshControl.tintColor = [UIColor grayColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getLatestData)
+                  forControlEvents:UIControlEventValueChanged];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:@"http://31.131.24.188:8080/allUsersInfo" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         data = responseObject;
@@ -137,6 +143,20 @@
         NSLog(@"Error: %@", error);
     }];
 }
+
+- (void)getLatestData{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"http://31.131.24.188:8080/allUsersInfo" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.refreshControl endRefreshing];
+        data = responseObject;
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    }];
+    
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [data count];
