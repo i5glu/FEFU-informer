@@ -164,7 +164,7 @@
     [manager GET:@"http://31.131.24.188:8080/drivingBidsList/0" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.refreshControl endRefreshing];
         data = responseObject;
-        loadOffset = @5;
+        loadOffset = @15;
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
