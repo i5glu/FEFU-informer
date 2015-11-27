@@ -168,6 +168,7 @@
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.refreshControl endRefreshing];
     }];
     
 }

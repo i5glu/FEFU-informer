@@ -152,6 +152,7 @@
         [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.refreshControl endRefreshing];
     }];
     
 }
@@ -172,6 +173,7 @@
     NSString *secondName = [[data objectAtIndex:indexPath.row] objectForKey:@"last_name"];
     NSString *fullName = [[firstName stringByAppendingString:@" "] stringByAppendingString:secondName];
     cell.textLabel.text = fullName;
+    NSLog(@"%@", [[data objectAtIndex:indexPath.row] objectForKey:@"avatar_src"]);
     dispatch_async(dispatch_get_global_queue(0,0), ^{
         NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: [[data objectAtIndex:indexPath.row] objectForKey:@"avatar_src"]  ]];
         if ( imageData == nil )

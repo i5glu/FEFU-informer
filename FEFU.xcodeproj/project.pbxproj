@@ -90,6 +90,7 @@
 			children = (
 				C91CA42D1BFCC1A40026C768 /* RegistrationViewController.h */,
 				C91CA42E1BFCC1A40026C768 /* RegistrationViewController.m */,
+				C9BD08861C02245F00DA489A /* AddCarRideViewController.h */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -190,7 +191,6 @@
 				C9BD08811C021EE400DA489A /* CarCell.m */,
 				C9BD08831C021FB100DA489A /* CarTableViewController.h */,
 				C9BD08841C021FB100DA489A /* CarTableViewController.m */,
-				C9BD08861C02245F00DA489A /* AddCarRideViewController.h */,
 				C9BD08871C02245F00DA489A /* AddCarRideViewController.m */,
 			);
 			name = Car;
@@ -453,6 +453,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FARPOST.FEFU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -465,6 +466,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FARPOST.FEFU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

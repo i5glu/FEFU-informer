@@ -38,7 +38,7 @@
     if (_avatarView.image) {
         fileUpload = [UIImagePNGRepresentation(_avatarView.image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     } else {
-        fileUpload = @"nill";
+        fileUpload = @"null";
     }
 
     

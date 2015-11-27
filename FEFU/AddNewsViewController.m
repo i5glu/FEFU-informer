@@ -62,7 +62,7 @@
     if (_picture.image) {
         fileUpload = [UIImagePNGRepresentation(_picture.image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     } else {
-        fileUpload = @"nill";
+        fileUpload = @"null";
     }
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

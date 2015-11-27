@@ -168,8 +168,8 @@
         data = responseObject;
         offsetValue = @5;
         [self.tableView reloadData];
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.refreshControl endRefreshing];
     }];
 
 }
